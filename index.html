@@ -1,187 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>DXLABSPHARMA – Research Peptides & Formulations</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0; padding: 0;
-      background: #f5f5f5;
-      color: #222;
-    }
-    header {
-      background-color: #111;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      position: relative;
-    }
-    .lang-toggle {
-      position: absolute;
-      top: 20px; right: 20px;
-    }
-    .lang-toggle button {
-      background: none;
-      border: none;
-      color: white;
-      cursor: pointer;
-      font-size: 18px;
-      margin-left: 10px;
-    }
-    .container {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 0 20px;
-    }
-    .product-card {
-      background: white;
-      padding: 20px;
-      margin-bottom: 30px;
-      border-radius: 6px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    }
-    .product-card h3 {
-      margin-top: 0;
-    }
-    .product-card a {
-      display: inline-block;
-      margin-top: 10px;
-      padding: 10px 15px;
-      background-color: #0e9447;
-      color: white;
-      text-decoration: none;
-      border-radius: 4px;
-    }
-    .disclaimer {
-      font-size: 0.85em;
-      color: #888;
-      margin-top: 10px;
-    }
-    footer {
-      background-color: #111;
-      color: white;
-      padding: 20px;
-      text-align: center;
-      margin-top: 50px;
-    }
-    .reviews {
-      margin-top: 20px;
-      border-top: 1px solid #eee;
-      padding-top: 15px;
-    }
-    .review {
-      background-color: #f9f9f9;
-      padding: 10px;
-      margin-bottom: 10px;
-      border-left: 4px solid #0e9447;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DXLABSPHARMA - Peptides Catalog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
+<body class="bg-gray-100 text-gray-900">
 
-<header>
-  <h1 id="title-en">DXLABSPHARMA</h1>
-  <h1 id="title-es" style="display:none;">DXLABSPHARMA</h1>
-  <p id="subtitle-en">Premium Research Peptides & Unique Formulations</p>
-  <p id="subtitle-es" style="display:none;">Péptidos de Investigación Premium y Formulaciones Únicas</p>
-  <div class="lang-toggle">
-    <button onclick="showLang('en')">🇬🇧 EN</button>
-    <button onclick="showLang('es')">🇪🇸 ES</button>
-  </div>
-</header>
+  <!-- Header -->
+  <header class="bg-blue-900 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">DXLABSPHARMA</h1>
+    <p class="mt-2">Research Peptides & Formulations</p>
+  </header>
 
-<div class="container">
+  <!-- Products Grid -->
+  <main class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-2xl font-semibold mb-6">Top Peptides</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="product-grid">
+      <!-- Product cards will be injected here -->
+    </div>
+  </main>
 
-  <!-- Leonora Product -->
-  <div class="product-card">
-    <h3 id="leonora-title-en">Leonora – Advanced Acne Treatment (60g)</h3>
-    <h3 id="leonora-title-es" style="display:none;">Leonora – Tratamiento Avanzado para el Acné (60g)</h3>
-    <img src="https://via.placeholder.com/400x200?text=Leonora+Acne+Formula" alt="Leonora Acne Formula" />
-    <p id="leonora-price-en"><strong>Price:</strong> $300 USD / COP $1,200,000</p>
-    <p id="leonora-price-es" style="display:none;"><strong>Precio:</strong> $300 USD / COP $1,200,000</p>
-    <p id="leonora-desc-en">
-      Leonora is a revolutionary acne compound combining <strong>Clindamycin 1.3%</strong>, <strong>Adapalene 0.14%</strong>, and <strong>Benzoyl Peroxide 3.0%</strong> in a cutting-edge crystal emulsion base for superior skin penetration and reduced irritation.
-    </p>
-    <p id="leonora-desc-es" style="display:none;">
-      Leonora es un compuesto revolucionario para el acné que combina <strong>Clindamicina 1.3%</strong>, <strong>Adapaleno 0.14%</strong> y <strong>Peróxido de Benzoilo 3.0%</strong> en una avanzada base de emulsión cristalina para mejor penetración y menor irritación.
-    </p>
-    <p id="leonora-unique-en"><strong>We are the only company in the world offering this formulation with all three actives in a crystal emulsion substance.</strong></p>
-    <p id="leonora-unique-es" style="display:none;"><strong>Somos la única empresa en el mundo que ofrece esta formulación con los tres activos en una sustancia de emulsión cristalina.</strong></p>
-    <p id="leonora-serving-en"><strong>Serving size:</strong> 60g</p>
-    <p id="leonora-serving-es" style="display:none;"><strong>Tamaño de la porción:</strong> 60g</p>
-    <a href="https://wa.me/573113389215?text=Hello,%20I%20want%20to%20order%20Leonora%20Acne%20Treatment." id="order-link-en">Order via WhatsApp</a>
-    <a href="https://wa.me/573113389215?text=Hola,%20quiero%20ordenar%20el%20tratamiento%20Leonora%20para%20acné." id="order-link-es" style="display:none;">Ordenar por WhatsApp</a>
-    <p class="disclaimer" id="disclaimer-en">*This product is for cosmetic or research purposes only. Not for systemic use or ingestion.</p>
-    <p class="disclaimer" id="disclaimer-es" style="display:none;">*Este producto es solo para fines cosméticos o de investigación. No para uso sistémico o ingestión.</p>
-
-    <div class="reviews">
-      <h4 id="reviews-title-en">Customer Reviews for Leonora</h4>
-      <h4 id="reviews-title-es" style="display:none;">Reseñas de Clientes para Leonora</h4>
-      <div class="review">
-        <strong>Maria G.:</strong>
-        <p id="review-text-en">This changed my skin in 2 weeks. I've tried everything before — nothing worked like Leonora.</p>
-        <p id="review-text-es" style="display:none;">Esto cambió mi piel en 2 semanas. He probado todo antes, nada funcionó como Leonora.</p>
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg w-11/12 md:w-1/2 max-h-[90vh] overflow-y-auto">
+      <h3 class="text-xl font-bold mb-4">Your Cart</h3>
+      <div id="cart-items" class="mb-4"></div>
+      <div class="mb-4">
+        <p class="font-semibold">Total: $<span id="cart-total">0</span></p>
       </div>
+      <button id="checkout-btn" class="bg-blue-900 text-white px-4 py-2 rounded mr-2">Checkout</button>
+      <button id="close-cart" class="bg-gray-500 text-white px-4 py-2 rounded">Close</button>
     </div>
   </div>
 
-  <!-- BPC-157 Product -->
-  <div class="product-card">
-    <h3 id="bpc-title-en">BPC-157</h3>
-    <h3 id="bpc-title-es" style="display:none;">BPC-157</h3>
-    <p id="bpc-price-en"><strong>Price:</strong> $160 USD / COP $640,000</p>
-    <p id="bpc-price-es" style="display:none;"><strong>Precio:</strong> $160 USD / COP $640,000</p>
-    <p id="bpc-desc-en">Research peptide commonly studied for tissue and tendon regeneration support.</p>
-    <p id="bpc-desc-es" style="display:none;">Péptido de investigación comúnmente estudiado para el apoyo en la regeneración de tejidos y tendones.</p>
-    <a href="https://wa.me/573113389215?text=Hello,%20I%20want%20to%20order%20BPC-157." id="bpc-order-en">Order via WhatsApp</a>
-    <a href="https://wa.me/573113389215?text=Hola,%20quiero%20ordenar%20BPC-157." id="bpc-order-es" style="display:none;">Ordenar por WhatsApp</a>
-    <p class="disclaimer" id="bpc-disclaimer-en">*This compound is for research use only. Not for human consumption.</p>
-    <p class="disclaimer" id="bpc-disclaimer-es" style="display:none;">*Este compuesto es solo para uso de investigación. No para consumo humano.</p>
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg w-11/12 md:w-1/2 max-h-[90vh] overflow-y-auto">
+      <h3 class="text-xl font-bold mb-4">Checkout Instructions</h3>
+      <div id="checkout-summary" class="mb-4"></div>
+      <p class="mb-2 font-semibold">Send your total payment to one of the following:</p>
+      <ul class="mb-4 list-disc pl-5">
+        <li>BTC: <span class="font-mono">your_btc_address</span></li>
+        <li>ETH: <span class="font-mono">your_eth_address</span></li>
+        <li>LTC: <span class="font-mono">your_ltc_address</span></li>
+        <li>Zelle: <span class="font-mono">your_email@example.com</span></li>
+      </ul>
+      <p class="mb-4">After sending payment, please email your receipt to <span class="font-bold">your_email@example.com</span> so we can process your order.</p>
+      
+      <form id="checkout-form" class="space-y-4">
+        <div>
+          <label class="block mb-1 font-semibold">Name</label>
+          <input type="text" id="customer-name" class="border p-2 w-full" required>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold">Email</label>
+          <input type="email" id="customer-email" class="border p-2 w-full" required>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold">Notes (optional)</label>
+          <textarea id="customer-notes" class="border p-2 w-full" rows="3"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded w-full">Submit Order</button>
+      </form>
+
+      <button id="close-checkout" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded w-full">Close</button>
+    </div>
   </div>
 
-  <!-- Shipping & Payments -->
-  <div class="product-card">
-    <h3 id="shipping-title-en">Shipping & Payments</h3>
-    <h3 id="shipping-title-es" style="display:none;">Envíos y Pagos</h3>
-    <p id="shipping-info-en">We ship worldwide 🌍 — flat shipping fee: <strong>$25 USD</strong> on all orders.</p>
-    <p id="shipping-info-es" style="display:none;">Enviamos a todo el mundo 🌍 — tarifa fija de envío: <strong>$25 USD</strong> en todos los pedidos.</p>
-    <p id="payment-methods-title-en">Accepted payment methods:</p>
-    <p id="payment-methods-title-es" style="display:none;">Métodos de pago aceptados:</p>
-    <ul>
-      <li>Bitcoin (BTC): <code>3QLk8Nz47w54ScmQEPuiFhQZi9E4pgX1Tn</code></li>
-      <li>Litecoin (LTC): <code>MQALXq7VixCsS11xkhQ6isfat5TowAsvQZ</code></li>
-      <li>Ethereum (ETH): <code>0x70F158A6F3fB54cFE6F2686F4e651b98AE93c75D</code></li>
-      <li>Zelle: <code>terra-mare@hotmail.com</code></li>
-    </ul>
-    <p id="payment-confirmation-en">Please confirm your payment via WhatsApp or email: <strong>Diegopiedra100@gmail.com</strong></p>
-    <p id="payment-confirmation-es" style="display:none;">Por favor confirme su pago vía WhatsApp o correo: <strong>Diegopiedra100@gmail.com</strong></p>
-  </div>
+  <!-- Floating Cart Button -->
+  <button id="open-cart" class="fixed bottom-4 right-4 bg-blue-900 text-white px-6 py-3 rounded-full shadow-lg">Cart (<span id="cart-count">0</span>)</button>
 
-</div>
-
-<footer>
-  <p>&copy; 2025 DXLABSPHARMA. All rights reserved.</p>
-</footer>
-
-<script>
-  function showLang(lang) {
-    const enElements = document.querySelectorAll('[id$="-en"]');
-    const esElements = document.querySelectorAll('[id$="-es"]');
-
-    if (lang === 'en') {
-      enElements.forEach(el => el.style.display = '');
-      esElements.forEach(el => el.style.display = 'none');
-    } else {
-      enElements.forEach(el => el.style.display = 'none');
-      esElements.forEach(el => el.style.display = '');
-    }
-  }
-
-  // Default language
-  showLang('en');
-</script>
-
-</body>
-</html>
+  <script>
+    // Product data
+    const products = [
+      { id: 1, name: "BPC-157", price: 300, description: "Tissue healing, gut, tendon & ligament recovery. Research use only." },
+      { id: 2, name: "TB-500", price: 300, description: "Wound healing, angiogenesis, repair. Research use only." },
+      { id: 3, name: "CJC-1295", price: 300, description: "GH releasing hormone analog, boosts IGF-1. Research use only." },
+      { id: 4, name: "Ipamorelin", price: 300, description: "Selective GH secretagogue, recovery & body composition. Research use only." },
+      { id: 5, name: "IGF-1 LR3", price: 400, description: "Muscle growth, hypertrophy, performance recovery. Research use only." },
+      { id: 6, name: "Retatrutide 10mg", price: 500, description: "GLP-1/GIP/GCGR multi-agonist peptide for metabolic support. Research use only." },
+      { id: 7, name: "GHK-Cu", price: 250, description: "Copper peptide for skin repair, anti-aging, wound healing. Research use only." },
+      { id: 8, name: "Epitalon", price: 350, description: "Telomere lengthening, anti-a
