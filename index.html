@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DXLABSPHARMA - Peptides Catalog</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 text-gray-900">
+
+  <!-- Header -->
+  <header class="bg-blue-900 text-white p-6 text-center">
+    <h1 class="text-3xl font-bold">DXLABSPHARMA</h1>
+    <p class="mt-2">Research Peptides & Formulations</p>
+  </header>
+
+  <!-- Products Grid -->
+  <main class="p-6 max-w-6xl mx-auto">
+    <h2 class="text-2xl font-semibold mb-6">Top Peptides</h2>
+    <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6" id="product-grid">
+      <!-- Product cards will be injected here -->
+    </div>
+  </main>
+
+  <!-- Cart Modal -->
+  <div id="cart-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg w-11/12 md:w-1/2 max-h-[90vh] overflow-y-auto">
+      <h3 class="text-xl font-bold mb-4">Your Cart</h3>
+      <div id="cart-items" class="mb-4"></div>
+      <div class="mb-4">
+        <p class="font-semibold">Total: $<span id="cart-total">0</span></p>
+      </div>
+      <button id="checkout-btn" class="bg-blue-900 text-white px-4 py-2 rounded mr-2">Checkout</button>
+      <button id="close-cart" class="bg-gray-500 text-white px-4 py-2 rounded">Close</button>
+    </div>
+  </div>
+
+  <!-- Checkout Modal -->
+  <div id="checkout-modal" class="fixed inset-0 bg-black bg-opacity-50 hidden justify-center items-center z-50">
+    <div class="bg-white p-6 rounded-lg w-11/12 md:w-1/2 max-h-[90vh] overflow-y-auto">
+      <h3 class="text-xl font-bold mb-4">Checkout Instructions</h3>
+      <div id="checkout-summary" class="mb-4"></div>
+      <p class="mb-2 font-semibold">Send your total payment to one of the following:</p>
+      <ul class="mb-4 list-disc pl-5">
+        <li>BTC: <span class="font-mono">your_btc_address</span></li>
+        <li>ETH: <span class="font-mono">your_eth_address</span></li>
+        <li>LTC: <span class="font-mono">your_ltc_address</span></li>
+        <li>Zelle: <span class="font-mono">your_email@example.com</span></li>
+      </ul>
+      <p class="mb-4">After sending payment, please email your receipt to <span class="font-bold">your_email@example.com</span> so we can process your order.</p>
+      
+      <form id="checkout-form" class="space-y-4">
+        <div>
+          <label class="block mb-1 font-semibold">Name</label>
+          <input type="text" id="customer-name" class="border p-2 w-full" required>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold">Email</label>
+          <input type="email" id="customer-email" class="border p-2 w-full" required>
+        </div>
+        <div>
+          <label class="block mb-1 font-semibold">Notes (optional)</label>
+          <textarea id="customer-notes" class="border p-2 w-full" rows="3"></textarea>
+        </div>
+        <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded w-full">Submit Order</button>
+      </form>
+
+      <button id="close-checkout" class="mt-4 bg-gray-500 text-white px-4 py-2 rounded w-full">Close</button>
+    </div>
+  </div>
+
+  <!-- Floating Cart Button -->
+  <button id="open-cart" class="fixed bottom-4 right-4 bg-blue-900 text-white px-6 py-3 rounded-full shadow-lg">Cart (<span id="cart-count">0</span>)</button>
+
+  <script>
+    // Product data
+    const products = [
+      { id: 1, name: "BPC-157", price: 300, description: "Tissue healing, gut, tendon & ligament recovery. Research use only." },
+      { id: 2, name: "TB-500", price: 300, description: "Wound healing, angiogenesis, repair. Research use only." },
+      { id: 3, name: "CJC-1295", price: 300, description: "GH releasing hormone analog, boosts IGF-1. Research use only." },
+      { id: 4, name: "Ipamorelin", price: 300, description: "Selective GH secretagogue, recovery & body composition. Research use only." },
+      { id: 5, name: "IGF-1 LR3", price: 400, description: "Muscle growth, hypertrophy, performance recovery. Research use only." },
+      { id: 6, name: "Retatrutide 10mg", price: 500, description: "GLP-1/GIP/GCGR multi-agonist peptide for metabolic support. Research use only." },
+      { id: 7, name: "GHK-Cu", price: 250, description: "Copper peptide for skin repair, anti-aging, wound healing. Research use only." },
+      { id: 8, name: "Epitalon", price: 350, description: "Telomere lengthening, anti-aging, longevity studies. Research use only." },
+      { id: 9, name: "Thymosin Alpha-1", price: 300, description: "Immune modulation, infection resistance. Research use only." },
+      { id: 10, name: "AOD-9604", price: 300, description: "Fragment of HGH, fat metabolism & weight control. Research use only." }
+    ];
+
+    // Cart
+    let cart = [];
+
+    const productGrid = document.getElementById('product-grid');
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    const cartCount = document.getElementById('cart-count');
+    const checkoutSummary = document.getElementById('checkout-summary');
+
+    // Render products
+    products.forEach(p => {
+      const card = document.createElement('div');
+      card.className = "bg-white p-4 rounded shadow flex flex-col justify-between";
+      card.innerHTML = `
+        <h3 class="font-bold text-lg mb-2">${p.name}</h3>
+        <p class="mb-2">${p.description}</p>
+        <p class="font-semibold mb-2">$${p.price}</p>
+        <button class="bg-blue-900 text-white px-3 py-1 rounded add-to-cart">Add to Cart</button>
+      `;
+      productGrid.appendChild(card);
+
+      card.querySelector('.add-to-cart').addEventListener('click', () => addToCart(p));
+    });
+
+    function addToCart(product) {
+      const existing = cart.find(item => item.id === product.id);
+      if(existing) existing.qty++;
+      else cart.push({...product, qty: 1});
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      cartItems.innerHTML = '';
+      let total = 0;
+      cart.forEach(item => {
+        total += item.price * item.qty;
+        cartItems.innerHTML += `
+          <div class="flex justify-between mb-2">
+            <span>${item.name} x${item.qty}</span>
+            <span>$${item.price * item.qty}</span>
+          </div>
+        `;
+      });
+      cartTotal.textContent = total;
+      cartCount.textContent = cart.reduce((sum, item) => sum + item.qty, 0);
+    }
+
+    // Cart modal
+    const cartModal = document.getElementById('cart-modal');
+    document.getElementById('open-cart').addEventListener('click', () => cartModal.classList.remove('hidden'));
+    document.getElementById('close-cart').addEventListener('click', () => cartModal.classList.add('hidden'));
+
+    // Checkout modal
+    const checkoutModal = document.getElementById('checkout-modal');
+    document.getElementById('checkout-btn').addEventListener('click', () => {
+      checkoutSummary.innerHTML = '';
+      cart.forEach(item => {
+        checkoutSummary.innerHTML += `<p>${item.name} x${item.qty} - $${item.price * item.qty}</p>`;
+      });
+      checkoutSummary.innerHTML += `<p class="font-semibold mt-2">Total: $${cart.reduce((sum,item)=>sum+item.price*item.qty,0)}</p>`;
+      cartModal.classList.add('hidden');
+      checkoutModal.classList.remove('hidden');
+    });
+    document.getElementById('close-checkout').addEventListener('click', () => checkoutModal.classList.add('hidden'));
+
+    // Form submission via Formspree or EmailJS
+    document.getElementById('checkout-form').addEventListener('submit', e => {
+      e.preventDefault();
+      alert('Thank you! Please send your payment and email your receipt to your_email@example.com. Your order is pending.');
+      checkoutModal.classList.add('hidden');
+      cart = [];
+      updateCartUI();
+    });
+  </script>
+
+</body>
+</html>
