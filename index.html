@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DXLABSPHARMA – Research Peptides & Formulations</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: #f5f5f5;
+      color: #222;
+    }
+    header {
+      background-color: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+    }
+    .lang-toggle {
+      position: absolute;
+      top: 20px; right: 20px;
+    }
+    .lang-toggle button {
+      background: none;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 18px;
+      margin-left: 10px;
+    }
+    .container {
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+    .product-card {
+      background: white;
+      padding: 20px;
+      margin-bottom: 30px;
+      border-radius: 6px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    .product-card h3 {
+      margin-top: 0;
+    }
+    .product-card a {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 15px;
+      background-color: #0e9447;
+      color: white;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+    .disclaimer {
+      font-size: 0.85em;
+      color: #888;
+      margin-top: 10px;
+    }
+    footer {
+      background-color: #111;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      margin-top: 50px;
+    }
+    .reviews {
+      margin-top: 20px;
+      border-top: 1px solid #eee;
+      padding-top: 15px;
+    }
+    .review {
+      background-color: #f9f9f9;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-left: 4px solid #0e9447;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1 id="title-en">DXLABSPHARMA</h1>
+  <h1 id="title-es" style="display:none;">DXLABSPHARMA</h1>
+  <p id="subtitle-en">Premium Research Peptides & Unique Formulations</p>
+  <p id="subtitle-es" style="display:none;">Péptidos de Investigación Premium y Formulaciones Únicas</p>
+  <div class="lang-toggle">
+    <button onclick="showLang('en')">🇬🇧 EN</button>
+    <button onclick="showLang('es')">🇪🇸 ES</button>
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- Leonora Product -->
+  <div class="product-card">
+    <h3 id="leonora-title-en">Leonora – Advanced Acne Treatment (60g)</h3>
+    <h3 id="leonora-title-es" style="display:none;">Leonora – Tratamiento Avanzado para el Acné (60g)</h3>
+    <img src="https://via.placeholder.com/400x200?text=Leonora+Acne+Formula" alt="Leonora Acne Formula" />
+    <p id="leonora-price-en"><strong>Price:</strong> $300 USD / COP $1,200,000</p>
+    <p id="leonora-price-es" style="display:none;"><strong>Precio:</strong> $300 USD / COP $1,200,000</p>
+    <p id="leonora-desc-en">
+      Leonora is a revolutionary acne compound combining <strong>Clindamycin 1.3%</strong>, <strong>Adapalene 0.14%</strong>, and <strong>Benzoyl Peroxide 3.0%</strong> in a cutting-edge crystal emulsion base for superior skin penetration and reduced irritation.
+    </p>
+    <p id="leonora-desc-es" style="display:none;">
+      Leonora es un compuesto revolucionario para el acné que combina <strong>Clindamicina 1.3%</strong>, <strong>Adapaleno 0.14%</strong> y <strong>Peróxido de Benzoilo 3.0%</strong> en una avanzada base de emulsión cristalina para mejor penetración y menor irritación.
+    </p>
+    <p id="leonora-unique-en"><strong>We are the only company in the world offering this formulation with all three actives in a crystal emulsion substance.</strong></p>
+    <p id="leonora-unique-es" style="display:none;"><strong>Somos la única empresa en el mundo que ofrece esta formulación con los tres activos en una sustancia de emulsión cristalina.</strong></p>
+    <p id="leonora-serving-en"><strong>Serving size:</strong> 60g</p>
+    <p id="leonora-serving-es" style="display:none;"><strong>Tamaño de la porción:</strong> 60g</p>
+    <a href="https://wa.me/573113389215?text=Hello,%20I%20want%20to%20order%20Leonora%20Acne%20Treatment." id="order-link-en">Order via WhatsApp</a>
+    <a href="https://wa.me/573113389215?text=Hola,%20quiero%20ordenar%20el%20tratamiento%20Leonora%20para%20acné." id="order-link-es" style="display:none;">Ordenar por WhatsApp</a>
+    <p class="disclaimer" id="disclaimer-en">*This product is for cosmetic or research purposes only. Not for systemic use or ingestion.</p>
+    <p class="disclaimer" id="disclaimer-es" style="display:none;">*Este producto es solo para fines cosméticos o de investigación. No para uso sistémico o ingestión.</p>
+
+    <div class="reviews">
+      <h4 id="reviews-title-en">Customer Reviews for Leonora</h4>
+      <h4 id="reviews-title-es" style="display:none;">Reseñas de Clientes para Leonora</h4>
+      <div class="review">
+        <strong>Maria G.:</strong>
+        <p id="review-text-en">This changed my skin in 2 weeks. I've tried everything before — nothing worked like Leonora.</p>
+        <p id="review-text-es" style="display:none;">Esto cambió mi piel en 2 semanas. He probado todo antes, nada funcionó como Leonora.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- BPC-157 Product -->
+  <div class="product-card">
+    <h3 id="bpc-title-en">BPC-157</h3>
+    <h3 id="bpc-title-es" style="display:none;">BPC-157</h3>
+    <p id="bpc-price-en"><strong>Price:</strong> $160 USD / COP $640,000</p>
+    <p id="bpc-price-es" style="display:none;"><strong>Precio:</strong> $160 USD / COP $640,000</p>
+    <p id="bpc-desc-en">Research peptide commonly studied for tissue and tendon regeneration support.</p>
+    <p id="bpc-desc-es" style="display:none;">Péptido de investigación comúnmente estudiado para el apoyo en la regeneración de tejidos y tendones.</p>
+    <a href="https://wa.me/573113389215?text=Hello,%20I%20want%20to%20order%20BPC-157." id="bpc-order-en">Order via WhatsApp</a>
+    <a href="https://wa.me/573113389215?text=Hola,%20quiero%20ordenar%20BPC-157." id="bpc-order-es" style="display:none;">Ordenar por WhatsApp</a>
+    <p class="disclaimer" id="bpc-disclaimer-en">*This compound is for research use only. Not for human consumption.</p>
+    <p class="disclaimer" id="bpc-disclaimer-es" style="display:none;">*Este compuesto es solo para uso de investigación. No para consumo humano.</p>
+  </div>
+
+  <!-- Shipping & Payments -->
+  <div class="product-card">
+    <h3 id="shipping-title-en">Shipping & Payments</h3>
+    <h3 id="shipping-title-es" style="display:none;">Envíos y Pagos</h3>
+    <p id="shipping-info-en">We ship worldwide 🌍 — flat shipping fee: <strong>$25 USD</strong> on all orders.</p>
+    <p id="shipping-info-es" style="display:none;">Enviamos a todo el mundo 🌍 — tarifa fija de envío: <strong>$25 USD</strong> en todos los pedidos.</p>
+    <p id="payment-methods-title-en">Accepted payment methods:</p>
+    <p id="payment-methods-title-es" style="display:none;">Métodos de pago aceptados:</p>
+    <ul>
+      <li>Bitcoin (BTC): <code>3QLk8Nz47w54ScmQEPuiFhQZi9E4pgX1Tn</code></li>
+      <li>Litecoin (LTC): <code>MQALXq7VixCsS11xkhQ6isfat5TowAsvQZ</code></li>
+      <li>Ethereum (ETH): <code>0x70F158A6F3fB54cFE6F2686F4e651b98AE93c75D</code></li>
+      <li>Zelle: <code>terra-mare@hotmail.com</code></li>
+    </ul>
+    <p id="payment-confirmation-en">Please confirm your payment via WhatsApp or email: <strong>Diegopiedra100@gmail.com</strong></p>
+    <p id="payment-confirmation-es" style="display:none;">Por favor confirme su pago vía WhatsApp o correo: <strong>Diegopiedra100@gmail.com</strong></p>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2025 DXLABSPHARMA. All rights reserved.</p>
+</footer>
+
+<script>
+  function showLang(lang) {
+    const enElements = document.querySelectorAll('[id$="-en"]');
+    const esElements = document.querySelectorAll('[id$="-es"]');
+
+    if (lang === 'en') {
+      enElements.forEach(el => el.style.display = '');
+      esElements.forEach(el => el.style.display = 'none');
+    } else {
+      enElements.forEach(el => el.style.display = 'none');
+      esElements.forEach(el => el.style.display = '');
+    }
+  }
+
+  // Default language
+  showLang('en');
+</script>
+
+</body>
+</html>
